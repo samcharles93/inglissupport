@@ -7,13 +7,11 @@
 			<h3>Unable to contact server, Please try again later.</h3>
 		</div>
 		<div v-else>
-			<section v-for="post in posts" class="posts">
-				<div class="card">
-					<h2 class="subtitle">{{ post.published_at }}</h2>
-					<h1 class="title">{{ post.title }}</h1>
+			<article v-for="post in posts" class="shadow">
+					<h5>{{ post.published_at }}</h5>
+					<h2>{{ post.title }}</h2>
 					<p>{{ post.content }}</p>
-				</div>
-			</section>
+			</article>
 		</div>
 	</div>
 </template>
@@ -27,6 +25,9 @@
 			const error = ref(true)
 			const emailForSubscription = ref('')
 
+			// TODO - Transfer to firestore
+			// ! getCollection
+			
 			const API_URL = 'https://api.catlow.tech/posts'
 
 			async function getPosts() {
@@ -44,8 +45,24 @@
 </script>
 
 <style>
-	.posts {
-		padding: 2em 1em;
+	article {
+		padding: 1.5em 1em;
 		margin: 3em;
+		background-color: rgba(255, 255, 255, 0.75);
+		border-radius: var(--border-radius);
+	}
+	article h5 {
+		margin-bottom: 3px;
+		line-height: 1.5;
+		font-style: italic;
+	}
+	article h2 {
+		margin-bottom: 12px;
+		line-height: 2;
+		font-weight: bold;
+	}
+	article p {
+		line-height: 1.75;
+		font-weight: 400;
 	}
 </style>

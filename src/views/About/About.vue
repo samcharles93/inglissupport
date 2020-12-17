@@ -18,7 +18,7 @@
       </section>
       <div class="spacer" />
       <!-- TODO - REMOVE ME -->
-      <section id="who-we-are" class="text-card text-center shadow p-3 m-3">
+      <section class="text-card text-center shadow p-3 mb-3">
         <h3 class="text-center pb-2">
           What we do
         </h3>
