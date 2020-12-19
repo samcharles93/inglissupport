@@ -1,159 +1,112 @@
 <template>
-  <div class="nav-container shadow">
+  <header>
     <nav>
-      <div class="nav-brand">
-        <img src="../assets/images/inglis-logo.png" alt="logo" height="70" />
-      </div>
-      <div class="nav-menu" :class="{ active: this.navActive }">
-        <RouterLink to="/">
-          Home
-        </RouterLink>
-        <RouterLink to="/about">
-          About
-        </RouterLink>
-        <RouterLink to="/blog">
-          Blog
-        </RouterLink>
-        <RouterLink to="/contact">
-          Contact
+      <div class="brand">
+        <RouterLink :to="{ name: 'Home' }">
+          <img src="../assets/images/inglis-logo.png" alt="logo" height="70" />
         </RouterLink>
       </div>
-      <div
-        class="nav-burger"
-        @click="toggleNav"
-        :class="{ toggle: this.navActive }"
-      >
-        <div class="line1" />
-        <div class="line2" />
-        <div class="line3" />
+
+      <div class="menu">
+        <router-link :to="{ name: 'Home' }">Home</router-link>
+        <router-link :to="{ name: 'About' }">About</router-link>
+        <router-link :to="{ name: 'Blog' }">Blog</router-link>
+        <router-link :to="{ name: 'Contact' }">Contact</router-link>
+      </div>
+      <div v-if="user" class="user-links">
+        <RouterLink :to="{ name: 'Dashboard' }">Dashboard</RouterLink>
+        <RouterLink v-if="route.name === 'Blog'" :to="{ name: 'CreatePost' }">Create Post</RouterLink>
+        <button class="btn-underline" @click="handleLogout">Logout</button>
       </div>
     </nav>
-  </div>
+  </header>
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        navActive: false
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+import {useRoute} from 'vue-router'
+import useLogout from "../composables/useLogout";
+import getUser from "../composables/getUser";
+
+export default {
+  setup() {
+    const router = useRouter();
+    const route = useRoute();
+
+    console.log(route.name)
+
+    const { error, logout, isPending } = useLogout();
+    const { user } = getUser();
+    const isLoggedIn = ref(false);
+
+    const menuActive = ref(true);
+
+    const handleLogout = async () => {
+      await logout();
+      if (!error.value) {
+        router.push({ name: "Login" });
       }
-    },
-    methods: {
-      toggleNav() {
-        this.navActive = !this.navActive
-      }
-    }
+    };
+
+    return { menuActive, handleLogout, user, route };
   }
+};
 </script>
 
 <style>
-  .nav-container {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    background-color: var(--bg-header);
-  }
+header {
+  width: 100%;
+  padding: 12px 0;
+  background-color: var(--bg-header);
+}
+header nav {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+header nav .brand {
+}
+header nav .brand img {
+}
+header nav .menu {
+  margin: 1rem 0;
+}
+header nav .menu a {
+  margin: 0 0.75rem;
+}
 
-  nav {
-    max-width: 960px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 3fr 1fr;
-    grid-template-areas:
-      'logo burger'
-      'menu menu';
-  }
+.router-link-exact-active {
+  color: var(--text-color) !important;
+  font-style: italic;
+  text-decoration: underline;
+}
 
-  .nav-brand {
-    grid-area: logo;
-    grid-column: 1;
-    margin: 12px 1rem;
-    height: 10vh;
-  }
-  .nav-brand img {
-    height: 100%;
-    max-width: 100%;
-  }
+.router-link-exact-active:hover {
+  text-decoration: underline;
+}
 
-  .nav-menu {
-    grid-area: menu;
-    display: none;
-    padding: 0 1rem;
-  }
+.router-link-exact-active:focus {
+  text-decoration: underline;
+  outline: none;
+}
 
-  .nav-menu a {
-    color: var(--text-color);
-    text-decoration: none;
-    outline: none;
+.user-links {
   }
+.user-links a, .user-links button {
+  margin: 0 0.75rem;
+  padding: unset;
+}
 
-  .router-link-exact-active {
-    color: var(--text-color) !important;
-    font-style: italic;
-    text-decoration: underline;
+@media (min-width: 720px) {
+  header nav {
+    flex-direction: row;
   }
-
-  .router-link-exact-active:hover {
-    text-decoration: underline;
+  header nav .menu {
+    margin-left: auto;
   }
-
-  .router-link-exact-active:focus {
-    text-decoration: underline;
-    outline: none;
-  }
-
-  .nav-burger {
-    grid-area: burger;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    cursor: pointer;
-  }
-
-  .nav-burger div {
-    width: 6px;
-    height: 6px;
-    border-radius: 6px;
-    margin: 6px 3px;
-    transition: 0.3s ease;
-    background-color: var(--accent);
-  }
-
-  .nav-menu.active {
-    display: grid;
-    background-color: var(--bg-body);
-  }
-
-  .active a {
-    padding: 1rem 0;
-  }
-
-  .toggle .line1 {
-    transform: translate(12px, 12px);
-  }
-  /* .toggle .line2 {
-    opacity: 0;
-  } */
-  .toggle .line3 {
-    transform: translate(-12px, -12px);
-  }
-
-  @media screen and (min-width: 720px) {
-    nav {
-      grid-template-areas: 'logo menu';
-    }
-
-    .nav-burger {
-      display: none;
-    }
-
-    .nav-menu {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .nav-menu a {
-      margin: 0 1rem;
-    }
-  }
+}
 </style>
