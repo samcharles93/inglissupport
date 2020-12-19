@@ -1,22 +1,32 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import About from '../views/About/About.vue'
+import AboutValues from '../views/About/AboutValues.vue'
+import AboutServices from '../views/About/AboutServices.vue'
 import Blog from '../views/Blog/Blog.vue'
 import BlogPost from '../views/Blog/BlogPost.vue'
+import CreatePost from '../views/Blog/CreatePost.vue'
 import Contact from '../views/Contact.vue'
 import PageNotFound from '../views/PageNotFound.vue'
 import StaffLogin from '../views/Dashboard/StaffLogin.vue'
+import StaffSignup from '../views/Dashboard/StaffSignup.vue'
 import Dashboard from '../views/Dashboard/Dashboard.vue'
 
 // Route Guards
 import { auth } from '../firebase/config'
 
-const requireAuth = async () => {
-  // TODO - Add RouteGuard
+const requireAuth = (to, from, next) => {
+  let user = auth.currentUser
+  if (!user) {
+    next({ name: 'Login' })
+  } else { next() }
 }
 
-const noRequireAuth = async () => {
-  // TODO - Add RouteGuard
+const requireNoAuth = (to, from, next) => {
+  let user = auth.currentUser
+  if (user) {
+    next({ name: 'Dashboard' })
+  } else { next() }
 }
 
 const routes = [
@@ -31,9 +41,19 @@ const routes = [
     component: About
   },
   {
+    path: '/about/values',
+    name: 'AboutValues',
+    component: AboutValues
+  },
+  {
+    path: '/about/services',
+    name: 'AboutServices',
+    component: AboutServices
+  },
+  {
     path: '/blog',
     name: 'Blog',
-    component: Blog
+    component: Blog,
   },
   {
     path: '/blog/:id',
@@ -62,11 +82,13 @@ const routes = [
     path: '/staff-login',
     name: 'StaffLogin',
     component: StaffLogin,
+    beforeEnter: requireNoAuth
   },
   {
     path: '/staff-signup',
     name: 'StaffSignup',
-    component: StaffSignup
+    component: StaffSignup,
+    beforeEnter: requireNoAuth
   },
   // Catchall
   {
