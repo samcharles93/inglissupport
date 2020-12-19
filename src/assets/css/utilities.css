@@ -53,7 +53,7 @@
   color: var(--accent);
   border: none;
   border-radius: var(--border-radius);
-  font-size: large;
+  font-size: medium;
   font-weight: bold;
   transition: all 0.3s ease;
 }
@@ -74,7 +74,7 @@
   color: var(--primary);
   border: none;
   border-radius: var(--border-radius);
-  font-size: small;
+  font-size: medium;
   font-weight: bold;
   transition: all 0.3s ease;
 }
@@ -90,9 +90,11 @@
 .btn-underline {
   display: inline-block;
   background-color: transparent;
+  padding: 10px 30px;
+  color: var(--accent);
+  font-size: inherit;
   cursor: pointer;
   border: none;
-  font-size: small;
 }
 
 .btn-underline:hover {
@@ -101,6 +103,11 @@
 
 .btn-underline:focus {
   text-decoration: underline;
+}
+
+.warning {
+  color: #d7b7be;
+  background-color: var(--warning);
 }
 
 /* Margin */
