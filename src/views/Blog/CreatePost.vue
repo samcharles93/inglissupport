@@ -96,7 +96,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: start;
+  align-items: flex-start;
   margin: 3em;
   min-height: 40vh;
 }
