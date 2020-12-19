@@ -12,9 +12,6 @@
       <p>ABN 56 335 494 559</p>
     </div>
   </footer>
-  <div class="footer-links">
-    <router-link :to="{ name: 'StaffLogin' }">Staff Login</router-link>
-  </div>
 </template>
 
 <script>
