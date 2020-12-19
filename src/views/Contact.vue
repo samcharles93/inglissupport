@@ -1,64 +1,65 @@
 <template>
-  <h1 class="text-center my-4">Contact Us</h1>
-  <div class="contact-page">
-    <form @submit.prevent="handleSubmit">
-      <label>Name:</label>
-      <input v-model="name" type="text" required />
-      <label>Email:</label>
-      <input v-model="email_address" type="email" required />
-      <label>Phone:</label>
-      <input v-model="phone_number" type="tel" required />
-      <label>Message:</label>
-      <textarea v-model="message" maxlength="500" required />
-      <button type="submit" class="btn-alt shadow">Submit</button>
-    </form>
-    <section class="contact-info">
-      <div class="map">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3011.620731217613!2d145.7258656932093!3d-40.98978505843468!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xaa7bf3d56c102e89%3A0x26e570462b6f6156!2s120%20Goldie%20St%2C%20Wynyard%20TAS%207325!5e0!3m2!1sen!2sau!4v1608209732436!5m2!1sen!2sau"
-          width="100%"
-          height="250"
-          frameborder="0"
-          style="border:none;display:flex;border-radius:var(--border-radius)"
-          aria-hidden="false"
-        ></iframe>
-      </div>
-      <div>
-        <h4>Email:</h4>
-        <p>
-          <a href="mailto:info@inglissupport.com">info@inglissupport.com</a>
-        </p>
-      </div>
-      <div>
-        <h4>Phone:</h4>
-        <p><a href="tel:+61364422198">03 6442 2198</a></p>
-      </div>
-      <div>
-        <h4>Address:</h4>
-        <p>120 Goldie St, Wynyard TAS 7325</p>
-      </div>
-    </section>
+  <div>
+    <h1 class="text-center my-4">Contact Us</h1>
+    <div class="contact-page">
+      <form @submit.prevent="handleSubmit">
+        <label>Name:</label>
+        <input v-model="name" type="text" required />
+        <label>Email:</label>
+        <input v-model="email_address" type="email" required />
+        <label>Phone:</label>
+        <input v-model="phone_number" type="tel" required />
+        <label>Message:</label>
+        <textarea v-model="message" maxlength="500" required />
+        <button type="submit" class="btn-alt shadow">Submit</button>
+      </form>
+      <section class="contact-info">
+        <div class="map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3011.620731217613!2d145.7258656932093!3d-40.98978505843468!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xaa7bf3d56c102e89%3A0x26e570462b6f6156!2s120%20Goldie%20St%2C%20Wynyard%20TAS%207325!5e0!3m2!1sen!2sau!4v1608209732436!5m2!1sen!2sau"
+            width="100%"
+            height="250"
+            frameborder="0"
+            style="border:none;display:flex;border-radius:var(--border-radius)"
+            aria-hidden="false"
+          ></iframe>
+        </div>
+        <div>
+          <h4>Email:</h4>
+          <p>
+            <a href="mailto:info@inglissupport.com">info@inglissupport.com</a>
+          </p>
+        </div>
+        <div>
+          <h4>Phone:</h4>
+          <p><a href="tel:+61364422198">03 6442 2198</a></p>
+        </div>
+        <div>
+          <h4>Address:</h4>
+          <p>120 Goldie St, Wynyard TAS 7325</p>
+        </div>
+      </section>
+    </div>
+    <teleport to="#modals" v-if="showModal">
+      <Modal @close="showModal = !showModal">
+        <h1>Message Sent</h1>
+        <p>Thanks for your message, we'll be back to you as soon as possible</p>
+        <template v-slot:links> </template>
+      </Modal>
+    </teleport>
   </div>
-  <teleport to="#modals" v-if="showModal">
-    <Modal @close="showModal = !showModal">
-      <h1>Message Sent</h1>
-      <p>Thanks for your message, we'll be back to you as soon as possible</p>
-      <template v-slot:links>
-      </template>
-    </Modal>
-  </teleport>
 </template>
 
 <script>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-import Modal from '../components/Modal.vue'
+import Modal from "../components/Modal.vue";
 
 export default {
-	components: { Modal },
+  components: { Modal },
   setup(props, context) {
     const router = useRouter();
-    const showModal = ref(false)
+    const showModal = ref(false);
 
     const contactInfo = ref({
       email: "",
@@ -76,13 +77,12 @@ export default {
       try {
         // Submit to firestore
         // Show messages on staff page
-        name.value = ''
-        email_address.value = ''
-        phone_number.value = ''
-        message.value = ''
-        showModal.value = !showModal.value
-      } catch (err) {
-      }
+        name.value = "";
+        email_address.value = "";
+        phone_number.value = "";
+        message.value = "";
+        showModal.value = !showModal.value;
+      } catch (err) {}
     };
 
     return {
@@ -114,7 +114,7 @@ export default {
   padding: 1.5em;
   gap: 0.5em;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.75);
+  background-color: var(--bg-header);
   border-radius: var(--border-radius);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
