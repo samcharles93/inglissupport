@@ -104,7 +104,6 @@ export default {
   flex-direction: column;
   align-content: center;
   justify-content: space-around;
-  margin: 3em;
 }
 .contact-page form {
   display: flex;

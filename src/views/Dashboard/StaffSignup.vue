@@ -12,21 +12,19 @@
 
 <script>
 import { ref } from "vue";
-import useSignup from "@/composables/useSignup.js";
 import Spinner from "@/components/Spinner.vue";
 import { useRouter } from "vue-router";
 
 export default {
   components: { Spinner },
   setup() {
-    const { error, signup, isPending } = useSignup();
     const router = useRouter();
 
     const displayName = ref("");
     const email = ref("");
     const password = ref("");
 
-    const handleSubmit = async () => {
+    const handleSubmit = async () => { // FIXME
       const res = await signup(email.value, password.value, displayName.value);
       if (!error.value) {
         router.push({ name: "Blog" });

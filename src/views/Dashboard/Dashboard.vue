@@ -1,18 +1,39 @@
 <template>
   <div class="dashboard">
-    <h1>Dashboard</h1>
+    <div class="greeting">
+      <h1 class="title">Dashboard</h1>
+      <h3 class="subtitle">Hello</h3>
+    </div>
+    <nav></nav>
+    <div class="container"></div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  setup() {
+    // const { user } = getUser();
+
+    return { };
+  }
+};
 </script>
 
 <style>
 .dashboard {
+  background-color: yellow;
+  width: 100%;
+  height: 100vh;
 }
-.dashboard h1 {
-  text-align: center;
-  margin: 2em auto;
+.dashboard .greeting {
+  height: 20vh;
+  text-align: justify;
+  margin: 3em auto;
+  width: 80%;
+  background-color: #fff;
+}
+.dashboard nav {
+  @media (min-width: 768px) {
+  }
 }
 </style>

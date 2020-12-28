@@ -29,13 +29,12 @@ footer {
   align-items: center;
   flex-direction: column;
   position: relative;
-  min-height: 8vh;
+  min-height: 20vh;
   bottom: 0;
   width: 100%;
   padding: 1rem;
   background-color: var(--bg-header);
-  box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 -2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 footer .info {
   width: 90%;
@@ -94,10 +93,7 @@ footer .socials p {
 
 @media (min-width: 720px) {
   footer {
-    display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
-    padding: 1rem;
   }
 }
 </style>

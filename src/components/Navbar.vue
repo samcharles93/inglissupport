@@ -13,9 +13,13 @@
         <router-link :to="{ name: 'Blog' }">Blog</router-link>
         <router-link :to="{ name: 'Contact' }">Contact</router-link>
       </div>
-      <div v-if="user" class="user-links">
+    </nav>
+    <nav v-if="user" class="auth-subnav">
+      <div class="user-links">
         <RouterLink :to="{ name: 'Dashboard' }">Dashboard</RouterLink>
-        <RouterLink v-if="route.name === 'Blog'" :to="{ name: 'CreatePost' }">Create Post</RouterLink>
+        <RouterLink v-if="route.name === 'Blog'" :to="{ name: 'CreatePost' }"
+          >Create Post</RouterLink
+        >
         <button class="btn-underline" @click="handleLogout">Logout</button>
       </div>
     </nav>
@@ -24,23 +28,16 @@
 
 <script>
 import { ref } from "vue";
-import { useRouter } from "vue-router";
-import {useRoute} from 'vue-router'
-import useLogout from "../composables/useLogout";
-import getUser from "../composables/getUser";
+import { useRouter, useRoute } from "vue-router";
 
 export default {
   setup() {
     const router = useRouter();
     const route = useRoute();
 
-    console.log(route.name)
-
-    const { error, logout, isPending } = useLogout();
-    const { user } = getUser();
     const isLoggedIn = ref(false);
-
     const menuActive = ref(true);
+    const user = ref(false);
 
     const handleLogout = async () => {
       await logout();
@@ -49,7 +46,7 @@ export default {
       }
     };
 
-    return { menuActive, handleLogout, user, route };
+    return { menuActive, handleLogout, route, user };
   }
 };
 </script>
@@ -59,6 +56,7 @@ header {
   width: 100%;
   padding: 12px 0;
   background-color: var(--bg-header);
+  box-shadow: 0 4px 6px 1px rgba(0, 0, 0, 0.1);
 }
 header nav {
   width: 80%;
@@ -67,6 +65,16 @@ header nav {
   flex-direction: column;
   align-items: center;
   transition: all 0.3s ease;
+}
+header .auth-subnav {
+  width: 80%;
+  margin: 0 auto;
+}
+header .auth-subnav .user-links {
+  margin-left: auto;
+}
+header .auth-subnav .user-links a, header .auth-subnav .user-links button {
+  font-size: 1rem;
 }
 header nav .brand {
 }
@@ -95,8 +103,9 @@ header nav .menu a {
 }
 
 .user-links {
-  }
-.user-links a, .user-links button {
+}
+.user-links a,
+.user-links button {
   margin: 0 0.75rem;
   padding: unset;
 }

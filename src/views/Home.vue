@@ -1,6 +1,6 @@
 <template>
     <div class="bg-inglis">
-      <div class="masthead flex container">
+      <div class="masthead">
         <div>
           <h1>
             Respecting Choice and
@@ -16,18 +16,15 @@
 
 <script>
 export default {
-  head() {
-    return {
-      title: 'Inglis Support Service'
-    }
-  }
+  
 }
 </script>
 
 <style>
 .bg-inglis {
-  width: 100%;
   height: 90vh;
+  width: 100% !important;
+  margin: 0 !important;
   background-image: url("../assets/images/background.jpg");
   background-repeat: no-repeat;
   background-size: cover;
@@ -35,7 +32,11 @@ export default {
   overflow: hidden;
 }
 .masthead {
-  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 0 40px;
   height: 100%;
   width: 100%;
   max-width: 100%;

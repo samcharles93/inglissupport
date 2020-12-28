@@ -1,15 +1,20 @@
 <template>
   <div class="create-post">
     <form @submit.prevent="handleSubmit">
-      <h4>Create New Post</h4>
+      <h4 v-if="!$route.params">Create New Post</h4>
+      <h4 v-else>Update Post</h4>
+      <div v-if="$route.params" class="post-info">
+        <p>Author: {{ post.author}}</p>
+      </div>
       <input type="text" placeholder="Post title" v-model="title" required />
-      <!-- TODO - Replace Editor -->
+      <!-- TODO - REPLACE EDITOR -->
       <!-- <ckeditor
         :editor="editor"
         v-model="body"
         :config="editorConfig"
       ></ckeditor> -->
       <div class="error">{{ error }}</div>
+      <div>Current Route Params: {{ $route.params }}</div>
       <div class="buttons">
         <button @click="cancelForm" class="btn-alt warning">Cancel</button>
         <button type="submit" class="btn-alt mx-1" v-if="!isPending">
@@ -22,35 +27,31 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { onBeforeUpdate, onMounted, ref } from "vue";
 import Spinner from "@/components/Spinner.vue";
-import { useRouter } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 
 export default {
   components: { Spinner },
   setup(props) {
+    const route = useRoute();
     const router = useRouter();
 
     const title = ref("");
     const body = ref("");
     const isPending = ref(false);
 
+    console.log('Post title: ', post.title);
+    
     const handleSubmit = async () => {
-      if (title.value && body.value) {
-        isPending.value = true;
-        await addDoc({ // FIXME
-          title: title.value,
-          body: body.value,
-          userId: user.value.uid,
-          author: user.value.displayName,
-          createdAt: timestamp()
-        });
-        isPending.value = false;
-        if (!error.value) {
-          title.value = "";
-          body.value = "";
-          router.push({ name: "Blog" });
-        }
+      const res = await updateDoc({ // FIXME
+        title: title.value,
+        body: body.value
+      });
+      if (!error.value) {
+        title.value = "";
+        body.value = "";
+        router.push({ name: "Blog" });
       }
     };
 
@@ -65,7 +66,7 @@ export default {
       error,
       handleSubmit,
       cancelForm,
-      editorConfig
+      post
     };
   }
 };

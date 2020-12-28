@@ -1,35 +1,14 @@
 /* Utility Classes */
 
-.blur {
-  filter: blur(5px);
-}
-
-.spacer {
-  height: 5rem;
-  width: 100%;
-}
-
-.screen-90 {
-  height: 90vh;
-}
-
-.flex {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.flex-row {
-  flex-direction: row;
-}
-.flex-col {
-  flex-direction: column;
+.enhance-text {
+  padding: 3px;
+  background-color: var(--accent);
+  border-radius: var(--border-radius);
 }
 
 .container {
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 0 40px;
+  margin: 3em auto;
+  width: 90%;
 }
 
 .hidden {
@@ -106,7 +85,7 @@
 }
 
 .warning {
-  color: #d7b7be;
+  color: #e7c7ce;
   background-color: var(--warning);
 }
 
