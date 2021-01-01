@@ -1,62 +1,83 @@
 <template>
-  <form @submit.prevent="handleSubmit">
-    <input type="hidden" name="form-name" value="ContactUs" />
+  <form
+    name="contact"
+    method="POST"
+    netlify-honeypot="bot-field"
+    data-netlify="true"
+    hidden
+    @submit.prevent="handleSubmit"
+  >
+    <input type="hidden" name="bot-field" />
     <label>Name:</label>
-    <input v-model="name" type="text" required />
+    <input name="name" v-model="form.name" type="text" required />
     <label>Email:</label>
-    <input v-model="email_address" type="email" required />
+    <input name="email" v-model="form.email" type="email" required />
     <label>Phone:</label>
-    <input v-model="phone_number" type="tel" required />
+    <input name="phone" v-model="form.phone" type="tel" required />
     <label>Message:</label>
-    <textarea v-model="message" maxlength="500" required />
+    <textarea name="message" v-model="form.message" maxlength="500" required />
     <button type="submit" class="btn-alt shadow">Submit</button>
   </form>
-   <teleport to="#modals" v-if="showModal">
-      <Modal @close="showModal = !showModal">
-        <h1>Message Sent</h1>
-        <p>Thanks for your message, we'll be back to you as soon as possible</p>
-        <template v-slot:links> </template>
-      </Modal>
-    </teleport>
+  <teleport to="#modals" v-if="showModal">
+    <Modal @close="showModal = !showModal">
+      <h1>Message Sent</h1>
+      <p>Thanks for your message, we'll be back to you as soon as possible</p>
+      <template v-slot:links> </template>
+    </Modal>
+  </teleport>
 </template>
 
 <script lang="ts">
-import { ref } from "vue";
+import { ref, Ref } from "vue";
 import { useRouter } from "vue-router";
-import Modal from '@/components/Modal.vue'
+import Modal from "@/components/Modal.vue";
 
 export default {
+  components: { Modal },
   setup() {
     const router = useRouter();
 
     const showModal = ref(false);
 
-    const name = ref("");
-    const email_address = ref("");
-    const phone_number = ref("");
-    const message = ref("");
+    const form = ref({
+      name: "",
+      email: "",
+      phone: "",
+      message: ""
+    });
+
+    const encode = (data: any) => {
+      return Object.keys(data)
+        .map(
+          key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`
+        )
+        .join("&");
+    };
 
     const handleSubmit = async () => {
-      // TODO - update handleSubmit
       try {
-        fetch('/', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded'},
-          
-        })
-        name.value = "";
-        email_address.value = "";
-        phone_number.value = "";
-        message.value = "";
+        fetch("/", {
+          method: "post",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          body: encode({
+            "form-name": "contact",
+            ...form.value
+          })
+        });
+        form.value.name = "";
+        form.value.email = "";
+        form.value.phone = "";
+        form.value.message = "";
         showModal.value = !showModal.value;
-      } catch (err) {}
+      } catch (err) {
+        console.log(err.message);
+      }
     };
 
     return {
-      name,
-      email_address,
-      phone_number,
-      message,
+      form,
       handleSubmit,
       showModal
     };
