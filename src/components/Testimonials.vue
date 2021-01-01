@@ -43,19 +43,18 @@ section.testimonials h3 {
 section.testimonials .testimonial {
   height: 100%;
   min-height: 150px;
+  width: 100%;
 }
 section.testimonials .testimonial-name {
   padding: 6px 1.5rem;
   cursor: pointer;
   background-color: var(--accent);
   color: white;
-  width: 80%;
   margin: auto;
 }
 section.testimonials .testimonial-message {
   padding: 6px 1.5rem;
   background-color: var(--primary);
-  width: 90%;
   margin: auto;
 }
 @media (min-width: 720px) {
