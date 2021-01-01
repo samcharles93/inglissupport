@@ -55,7 +55,7 @@ section.testimonials .testimonial-name {
 section.testimonials .testimonial-message {
   padding: 6px 1.5rem;
   background-color: var(--primary);
-  width: 80%;
+  width: 90%;
   margin: auto;
 }
 @media (min-width: 720px) {
