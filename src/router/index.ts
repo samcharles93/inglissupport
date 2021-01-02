@@ -28,36 +28,36 @@ const routes: Array<RouteRecordRaw> = [
     name: 'Blog',
     component: Blog,
   },
-  {
-    path: '/blog/create-post',
-    name: 'CreatePost',
-    component: CreatePost
-  },
-  {
-    path: '/blog/edit-post',
-    name: 'EditPost',
-    component: EditPost
-  },
+  // {
+  //   path: '/blog/create-post',
+  //   name: 'CreatePost',
+  //   component: CreatePost
+  // },
+  // {
+  //   path: '/blog/edit-post',
+  //   name: 'EditPost',
+  //   component: EditPost
+  // },
   {
     path: '/contact',
     name: 'Contact',
     component: Contact
   },
-  {
-    path: '/dashboard',
-    name: 'Dashboard',
-    component: Dashboard
-  },
-  {
-    path: '/staff-login',
-    name: 'StaffLogin',
-    component: StaffLogin
-  },
-  {
-    path: '/staff-signup',
-    name: 'StaffSignup',
-    component: StaffSignup
-  },
+  // {
+  //   path: '/dashboard',
+  //   name: 'Dashboard',
+  //   component: Dashboard
+  // },
+  // {
+  //   path: '/staff-login',
+  //   name: 'StaffLogin',
+  //   component: StaffLogin
+  // },
+  // {
+  //   path: '/staff-signup',
+  //   name: 'StaffSignup',
+  //   component: StaffSignup
+  // },
   {
     path: '/:catchAll(.*)',
     name: 'PageNotFound',
