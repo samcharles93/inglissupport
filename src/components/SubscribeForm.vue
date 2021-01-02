@@ -11,6 +11,7 @@
       <button class="btn-alt" v-else>Subscribe</button>
     </form>
   </div>
+
   <teleport to="#modals" v-if="showModal">
     <Modal @close="showModal = !showModal">
       <h1 class="my-1">Successfully Subscribed</h1>
@@ -25,7 +26,7 @@
 </template>
 
 <script>
-import Modal from '@/components/Modal.vue'
+import Modal from "@/components/Modal.vue";
 import { ref } from "vue";
 
 export default {
@@ -52,7 +53,13 @@ export default {
       }
     };
 
-    return { handleSubscription, emailForSubscription, subscribeError, showModal, isPending };
+    return {
+      handleSubscription,
+      emailForSubscription,
+      subscribeError,
+      showModal,
+      isPending
+    };
   }
 };
 </script>
@@ -60,15 +67,16 @@ export default {
 <style>
 .subscribe {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin: 2em 0;
+  margin-top: 3em;
+}
+.subscribe form {
+  margin: auto;
 }
 .subscribe input {
-  flex: 2;
+  width: 100%;
+  margin-bottom: 6px;
 }
 .subscribe button {
-  flex: 1;
-  margin-left: 3px;
+  width: 100%;
 }
 </style>
