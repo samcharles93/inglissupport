@@ -55,6 +55,10 @@ p {
   font-size: medium;
 }
 
+hr {
+  border: 1px solid var(--primary);
+}
+
 button {
   font-family: 'Poppins', sans-serif;
 }
