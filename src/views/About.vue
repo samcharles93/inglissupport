@@ -11,6 +11,9 @@
       </p>
       <p>Celebrating our key values in respecting choice and independence;</p>
     </section>
+    <section class="our-team">
+      <OurTeam />
+    </section>
     <section class="our-mission">
       <h2>
         What we do
@@ -42,6 +45,7 @@
         sollicitudin conubia nibh hendrerit tristique.
       </p>
     </section>
+    
     <Suspense>
       <template #default>
         <Testimonials />
@@ -57,10 +61,11 @@
 
 <script>
 import Testimonials from "@/components/Testimonials.vue";
+import OurTeam from "@/components/OurTeam.vue";
 import Spinner from "@/components/Spinner.vue";
 
 export default {
-  components: { Testimonials, Spinner }
+  components: { Testimonials, Spinner, OurTeam }
 };
 </script>
 
@@ -88,6 +93,8 @@ export default {
 .about-page section.our-mission {
 }
 .about-page section.testimonials {
+}
+.about-page section.our-team {
 }
 
 @media screen and (min-width: 720px) {
