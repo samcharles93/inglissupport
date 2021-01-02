@@ -1,11 +1,15 @@
 <template>
+  <h2 class="text-center">Our Team</h2>
   <div class="our-team">
     <div class="profile">
       <div class="image">
-        <img src="https://via.placeholder.com/100" alt="placeholder">
+        <img
+          src="https://randomuser.me/api/portraits/women/3.jpg"
+          alt="placeholder"
+        />
       </div>
       <div class="bio">
-        <h4>Team Member</h4>
+        <h4>Joyce Chambers</h4>
         <p>
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta veniam
           libero doloremque illo, est fugit, cumque molestiae dolores quidem
@@ -14,13 +18,16 @@
         </p>
       </div>
     </div>
-    <hr>
+    <hr />
     <div class="profile">
       <div class="image">
-        <img src="https://via.placeholder.com/100" alt="placeholder">
+        <img
+          src="https://randomuser.me/api/portraits/women/90.jpg"
+          alt="placeholder"
+        />
       </div>
       <div class="bio">
-        <h4>Team Member</h4>
+        <h4>Roberta Scott</h4>
         <p>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt ea eius
           distinctio temporibus ex repellat modi deleniti fugiat! Ut saepe
@@ -28,13 +35,16 @@
         </p>
       </div>
     </div>
-    <hr>
+    <hr />
     <div class="profile">
       <div class="image">
-        <img src="https://via.placeholder.com/100" alt="placeholder">
+        <img
+          src="https://randomuser.me/api/portraits/men/75.jpg"
+          alt="placeholder"
+        />
       </div>
       <div class="bio">
-        <h4>Team Member</h4>
+        <h4>Ross Shelton</h4>
         <p>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia maxime
           a eum asperiores odio vero vitae deserunt libero? Dignissimos minus
@@ -60,6 +70,11 @@
   justify-content: center;
   margin-bottom: 1em;
 }
+.our-team .profile .image img {
+  height: 100px;
+  border-radius: 50%;
+  box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.3);
+}
 .our-team .profile .bio {
   margin: 1em 1em 0;
 }
@@ -72,8 +87,8 @@
 }
 @media (min-width: 840px) {
   .our-team {
-  display: flex;
-  flex-direction: row;
-}
+    display: flex;
+    flex-direction: row;
+  }
 }
 </style>
