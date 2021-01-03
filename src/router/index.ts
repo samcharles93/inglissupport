@@ -3,14 +3,8 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 // Import Routes
 import Home from '../views/Home.vue'
 import About from '../views/About.vue'
-import Blog from '../views/Blog/Blog.vue'
-import CreatePost from '../views/Blog/CreatePost.vue'
-import EditPost from '../views/Blog/EditPost.vue'
 import Contact from '../views/Contact.vue'
 import PageNotFound from '../views/PageNotFound.vue'
-import StaffLogin from '../views/Dashboard/StaffLogin.vue'
-import StaffSignup from '../views/Dashboard/StaffSignup.vue'
-import Dashboard from '../views/Dashboard/Dashboard.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -26,7 +20,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/blog',
     name: 'Blog',
-    component: Blog,
+    component: () => import(/* webpackChunkName: "blog" */ '../views/Blog/Blog.vue'),
   },
   // {
   //   path: '/blog/create-post',
