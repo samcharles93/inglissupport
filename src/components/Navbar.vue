@@ -47,10 +47,6 @@ header nav {
   align-items: center;
   transition: all 0.3s ease;
 }
-header nav .brand {
-}
-header nav .brand img {
-}
 header nav .menu {
   margin: 1rem 0;
 }
@@ -60,7 +56,6 @@ header nav .menu a {
 
 .router-link-exact-active {
   color: var(--text-color) !important;
-  font-style: italic;
   text-decoration: underline;
 }
 
