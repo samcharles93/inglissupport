@@ -34,7 +34,7 @@
         <li>Finding the right services to suit your unique needs</li>
       </ol>
     </Accordion>
-    <Accordion title="Short Term Accomodation">
+    <Accordion title="Respite">
       <p>
         Our respite services are here to help you, to take care of your loved
         ones when you need a break, need time for activities or just to relax,

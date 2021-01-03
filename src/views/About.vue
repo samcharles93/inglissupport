@@ -42,10 +42,6 @@ export default {
 </script>
 
 <style scoped>
-.about-page {
-  display: flex;
-  flex-direction: column;
-}
 .about-page h1 {
   text-align: center;
   margin: 2.5rem 0;

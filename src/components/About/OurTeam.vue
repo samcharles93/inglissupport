@@ -60,6 +60,8 @@
 .our-team {
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
+  width: 100%;
 }
 .our-team .profile {
   display: block;
@@ -85,10 +87,12 @@
 .our-team .profile .bio p {
   text-align: center;
 }
-@media (min-width: 840px) {
+@media (min-width: 720px) {
   .our-team {
     display: flex;
     flex-direction: row;
+    margin: 0 auto;
+    width: 90%;
   }
 }
 </style>
