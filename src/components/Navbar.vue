@@ -26,7 +26,7 @@ export default {
     const router = useRouter();
 
     const menuActive = ref(true);
-route.name
+
     return { menuActive };
   }
 };
