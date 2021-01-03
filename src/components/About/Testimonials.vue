@@ -25,7 +25,6 @@ export default {
     const { testimonials } = await getTestimonials();
     const testimonial = ref({});
 
-    console.log(testimonials);
     let index = 0;
 
     function updateTestimonial() {
@@ -57,8 +56,8 @@ export default {
   padding-bottom: 1rem;
 }
 .testimonials div.t-box {
-  margin: 1rem auto;
-  width: 90%;
+  margin: 0 auto;
+  width: 100%;
 }
 .testimonials .testimonial {
   height: 100%;
@@ -100,7 +99,9 @@ export default {
   }
 }
 @media (min-width: 720px) {
-  .testimonials .testimonial {
+  .testimonials div.t-box {
+    margin: 0 auto;
+    width: 90%;
   }
 }
 </style>
