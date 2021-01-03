@@ -1,10 +1,9 @@
 <template>
   <h2>
-    What we do
+    Our Services
   </h2>
 
   <div class="services">
-    <h4 class="">Services we provide</h4>
     <Accordion title="Community Support">
       <p>
         At Inglis Support, we believe that getting involved with community
