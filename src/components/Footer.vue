@@ -5,7 +5,7 @@
       <p>Registered NDIS Provider</p>
     </div>
     <div class="info">
-      <p>Inglis Support Service © 2020</p>
+      <p>Inglis Support Service © {{ year }}</p>
       <p>
         Designed with dedication by <a href="https://catlow.tech">CatlowTech</a>
       </p>
@@ -15,9 +15,19 @@
 </template>
 
 <script>
+import { ref } from 'vue';
 export default {
   setup() {
-    return {};
+    const year = ref('')
+    let d = new Date()
+
+    const updateYear = () => {
+      year.value = d.getFullYear()
+    }
+
+    updateYear()
+
+    return { year };
   }
 };
 </script>
