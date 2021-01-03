@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="who-we-are">
     <h2>Who we are</h2>
     <p>
       Based in Wynyard, Tasmania and covering surrounding towns,
@@ -11,21 +11,21 @@
   </div>
 </template>
 
-<style scoped>
-.container {
+<style>
+.who-we-are {
   width: 100%;
   margin: 0 auto;
 }
-.container h2 {
+.who-we-are h2 {
   margin-bottom: 6px;
   text-align: center;
 }
-.container p {
+.who-we-are p {
   text-align: center;
   word-break: break-word;
 }
 @media (min-width: 720px) {
-  .container {
+  .who-we-are {
     margin: 0 auto;
     width: 90%;
   }
