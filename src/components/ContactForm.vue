@@ -8,13 +8,13 @@
     @submit.prevent="handleSubmit"
   >
     <input type="hidden" name="bot-field" />
-    <label>Name:</label>
+    <label for="name">Name:</label>
     <input name="name" v-model="form.name" type="text" required />
-    <label>Email:</label>
+    <label for="email">Email:</label>
     <input name="email" v-model="form.email" type="email" required />
-    <label>Phone:</label>
+    <label for="phone">Phone:</label>
     <input name="phone" v-model="form.phone" type="tel" required />
-    <label>Message:</label>
+    <label for="message">Message:</label>
     <textarea name="message" v-model="form.message" maxlength="500" required />
     <button type="submit" class="btn-alt shadow">Submit</button>
   </form>

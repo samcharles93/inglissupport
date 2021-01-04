@@ -6,6 +6,7 @@
       <section class="contact-info">
         <div class="map">
           <iframe
+            title="map of business location"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3011.620731217613!2d145.7258656932093!3d-40.98978505843468!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xaa7bf3d56c102e89%3A0x26e570462b6f6156!2s120%20Goldie%20St%2C%20Wynyard%20TAS%207325!5e0!3m2!1sen!2sau!4v1608209732436!5m2!1sen!2sau"
             width="100%"
             height="250"
@@ -26,7 +27,7 @@
         </div>
         <div>
           <h4>Address:</h4>
-          <p>120 Goldie St, Wynyard TAS 7325</p>
+          <p><a href="https://goo.gl/maps/xdShpadmVqQhVUXB9">120 Goldie St, Wynyard TAS 7325</a></p>
         </div>
       </section>
     </div>
