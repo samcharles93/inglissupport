@@ -1,7 +1,7 @@
 <template>
   <footer>
     <div class="socials">
-      <img src="../assets/images/we-heart-ndis.svg" alt="we heart ndis" />
+      <img src="../assets/images/we-heart-ndis.svg" alt="we heart ndis" height="60" width="60" />
       <p>Registered NDIS Provider</p>
     </div>
     <div class="info">

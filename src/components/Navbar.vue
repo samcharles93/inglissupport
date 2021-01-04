@@ -3,7 +3,7 @@
     <nav>
       <div class="brand">
         <RouterLink :to="{ name: 'Home' }">
-          <img src="../assets/images/inglis-logo.png" alt="logo" height="70" />
+          <img src="../assets/images/inglis-logo.png" alt="logo" height="70" width="111" />
         </RouterLink>
       </div>
 
