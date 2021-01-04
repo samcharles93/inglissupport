@@ -6,7 +6,6 @@
         placeholder="enter your email..."
         v-model="emailForSubscription"
       />
-      <div v-if="subscribeError">{{ subscribeError }}</div>
       <button class="btn-alt" v-if="isPending">Saving...</button>
       <button class="btn-alt" v-else>Subscribe</button>
     </form>
@@ -27,36 +26,29 @@
 
 <script>
 import Modal from "@/components/Modal.vue";
+import useSubscription from "@/composables/useSubscription";
 import { ref } from "vue";
 
 export default {
   components: { Modal },
   setup() {
     const emailForSubscription = ref("");
-    const subscribeError = ref(false);
     const showModal = ref(false);
     const isPending = ref(false);
 
     const handleSubscription = async () => {
       if (emailForSubscription.value) {
-        isPending.value = true;
-        const res = await addDoc({
-          email: emailForSubscription.value,
-          subscribedAt: timestamp()
-        });
         isPending.value = false;
-        if (!subscribeError.value) {
-          emailForSubscription.value = "";
-          showModal.value = true;
-        } else {
-        }
+        await useSubscription(emailForSubscription.value);
+        emailForSubscription.value = "";
+        isPending.value = false;
+        showModal.value = true;
       }
     };
 
     return {
       handleSubscription,
       emailForSubscription,
-      subscribeError,
       showModal,
       isPending
     };
