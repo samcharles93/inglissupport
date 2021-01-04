@@ -9,13 +9,13 @@
   >
     <input type="hidden" name="bot-field" />
     <label for="name">Name:</label>
-    <input name="name" v-model="form.name" type="text" required />
+    <input id="name" v-model="form.name" type="text" required />
     <label for="email">Email:</label>
-    <input name="email" v-model="form.email" type="email" required />
+    <input id="email" v-model="form.email" type="email" required />
     <label for="phone">Phone:</label>
-    <input name="phone" v-model="form.phone" type="tel" required />
+    <input id="phone" v-model="form.phone" type="tel" required />
     <label for="message">Message:</label>
-    <textarea name="message" v-model="form.message" maxlength="500" required />
+    <textarea id="message" v-model="form.message" maxlength="500" required />
     <button type="submit" class="btn-alt shadow">Submit</button>
   </form>
   <teleport to="#modals" v-if="showModal">
